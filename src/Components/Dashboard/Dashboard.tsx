@@ -30,8 +30,6 @@ const Dashboard = () => {
             <div className="dashboard__secondary-container">
                 <DashboardFilter />
             </div>
-
-            <LogoutButton />
         </div>
     );
 };

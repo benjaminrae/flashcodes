@@ -1,0 +1,16 @@
+.featured {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.featured__title {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.featured__cards-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}

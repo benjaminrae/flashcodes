@@ -19,8 +19,8 @@ function App() {
                 <Router>
                     <AuthProvider>
                         <Routes>
+                            <Route path="/" element={<Dashboard />} />
                             <Route element={<PrivateRoute />}>
-                                <Route path="/" element={<Dashboard />} />
                                 <Route element={<Profile />} path="/profile" />
                                 <Route
                                     element={<UpdateProfile />}

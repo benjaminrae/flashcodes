@@ -46,14 +46,6 @@ const New = () => {
                                 coverImageUrl={set.coverImage.url}
                                 title={set.title}
                             />
-                            // <div className="new__card" key={index}>
-                            //     <img
-                            //         src={set.coverImage.url}
-                            //         alt=""
-                            //         className="card__cover-image"
-                            //     />
-                            //     <h3 className="card__title">{set.title}</h3>
-                            // </div>
                         );
                     })}
             </div>
