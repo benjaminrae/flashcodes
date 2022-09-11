@@ -13,8 +13,11 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+    if (currentUser) {
+        console.log(currentUser);
+        navigate("/");
+    }
     const handleFormSubmit = async (event: React.SyntheticEvent) => {
-        console.log(event);
         event.preventDefault();
         if (!email) {
             return setError("Enter an email");
@@ -26,16 +29,17 @@ const Login = () => {
             setError("");
             setLoading(true);
             await login(email, password);
+            navigate("/");
         } catch (error) {
-            setError("There was a problem logging in");
+            setError(`There was a problem logging in: ${error}`);
         }
         if (currentUser) {
             console.log(currentUser);
             navigate("/");
         }
-        if (!currentUser) {
-            setError("There was a problem logging in");
-        }
+        // if (!currentUser) {
+        //     setError("There was a problem logging in");
+        // }
         setLoading(false);
     };
 

@@ -2,17 +2,19 @@ import "./Header.css";
 import { useAuth } from "../../contexts/AuthContext";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../services/firebase/firebase";
 
 const Header = () => {
     const [loggedIn, setLoggedIn] = useState(false);
 
-    const { currentUser } = useAuth();
+    const { currentUser, logout } = useAuth();
+    console.log(currentUser);
     useEffect(() => {
-        if (!currentUser) {
-            return;
-        }
-        setLoggedIn(true);
-    }, [currentUser]);
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setLoggedIn(true);
+        });
+        return unsubscribe;
+    }, []);
 
     return (
         <header className="header">
@@ -22,7 +24,13 @@ const Header = () => {
                     {loggedIn && (
                         <>
                             <li className="header__li">{currentUser.email}</li>
-                            <li>Log Out</li>
+                            <li
+                                onClick={() => {
+                                    logout();
+                                }}
+                            >
+                                Log Out
+                            </li>
                         </>
                     )}
                     {!loggedIn && (

@@ -3,6 +3,7 @@ import { useAuth } from "../../contexts/AuthContext";
 
 const Dashboard = () => {
     const { currentUser, logout } = useAuth();
+    console.log(currentUser);
     return (
         <>
             Dashboard

@@ -41,14 +41,36 @@ export const AuthProvider = ({ children }: Props) => {
     const [loading, setLoading] = useState(true);
 
     const signup = (email: string, password: string) => {
-        createUserWithEmailAndPassword(auth, email, password);
+        return createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                setCurrentUser(userCredential);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                return `Error ${errorCode} :- ${errorMessage} `;
+            });
     };
 
     const login = (email: string, password: string) => {
-        signInWithEmailAndPassword(auth, email, password);
+        return signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                setCurrentUser(userCredential);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                return `Error ${errorCode} :- ${errorMessage} `;
+            });
     };
     const logout = () => {
-        signOut(auth);
+        return signOut(auth)
+            .then(() => {})
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                return `Error ${errorCode} :- ${errorMessage} `;
+            });
     };
 
     useEffect(() => {
