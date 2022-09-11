@@ -6,6 +6,7 @@ import New from "./components/New/New";
 import Favourites from "./components/Favourites/Favourites";
 import Featured from "./components/Featured/Featured";
 import LogoutButton from "../LogoutButton/LogoutButton";
+
 const DashboardFilter = () => {
     return <div className="filter"></div>;
 };
@@ -29,13 +30,7 @@ const Dashboard = () => {
             <div className="dashboard__secondary-container">
                 <DashboardFilter />
             </div>
-            {/* <button
-                onClick={() => {
-                    logout();
-                }}
-            >
-                logout
-            </button> */}
+
             <LogoutButton />
         </div>
     );
