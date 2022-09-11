@@ -9,6 +9,7 @@ import { auth } from "../services/firebase/firebase";
 import {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
+    sendPasswordResetEmail,
     signInWithEmailAndPassword,
     signOut,
 } from "firebase/auth";
@@ -18,6 +19,7 @@ type AuthContextType = {
     signup: any;
     login: any;
     logout: any;
+    resetPassword: any;
 };
 
 const AuthContextDefaultValues: AuthContextType = {
@@ -25,6 +27,7 @@ const AuthContextDefaultValues: AuthContextType = {
     signup: () => {},
     login: () => {},
     logout: () => {},
+    resetPassword: () => {},
 };
 
 type Props = {
@@ -64,11 +67,8 @@ export const AuthProvider = ({ children }: Props) => {
             });
     };
     const logout = () => {
-        console.log("yess");
         return signOut(auth)
-            .then((response) => {
-                console.log("here");
-            })
+            .then((response) => response)
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -76,6 +76,9 @@ export const AuthProvider = ({ children }: Props) => {
             });
     };
 
+    const resetPassword = (email: string) => {
+        return sendPasswordResetEmail(auth, email);
+    };
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user);
@@ -89,6 +92,7 @@ export const AuthProvider = ({ children }: Props) => {
         signup,
         login,
         logout,
+        resetPassword,
     };
 
     return (

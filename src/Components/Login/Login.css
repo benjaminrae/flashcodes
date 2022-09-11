@@ -55,12 +55,14 @@ label {
     font-weight: bolder;
 }
 
-.login-form__signup-link {
+.login-form__signup-link,
+.login-form__forgot-password {
     color: var(--imperial-red);
     cursor: pointer;
 }
 
-.login-form__signup-link:active {
+.login-form__signup-link:active,
+.login-form__forgot-password:active {
     color: var(--up-maroon);
 }
 

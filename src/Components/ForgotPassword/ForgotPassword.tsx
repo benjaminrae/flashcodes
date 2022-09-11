@@ -5,18 +5,14 @@ import { useNavigate, Link } from "react-router-dom";
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState("");
-
+    const [message, setMessage] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const { login, currentUser } = useAuth();
+    const { resetPassword, currentUser } = useAuth();
 
     const navigate = useNavigate();
 
-    if (currentUser) {
-        console.log(currentUser);
-        navigate("/");
-    }
     const handleFormSubmit = async (event: React.SyntheticEvent) => {
         event.preventDefault();
         if (!email) {
@@ -26,18 +22,12 @@ const ForgotPassword = () => {
         try {
             setError("");
             setLoading(true);
-
-            navigate("/");
+            await resetPassword(email);
+            setMessage("Check your email inbox to reset your password");
         } catch (error) {
             setError(`There was a problem logging in: ${error}`);
         }
-        if (currentUser) {
-            console.log(currentUser);
-            navigate("/");
-        }
-        // if (!currentUser) {
-        //     setError("There was a problem logging in");
-        // }
+
         setLoading(false);
     };
 
@@ -52,6 +42,13 @@ const ForgotPassword = () => {
                     <div className="forgot-password-form__error-container">
                         <p className="forgot-password-form__error-message">
                             {error}
+                        </p>
+                    </div>
+                )}
+                {message && (
+                    <div className="forgot-password-form__message-container">
+                        <p className="forgot-password-form__message-message">
+                            {message}
                         </p>
                     </div>
                 )}
