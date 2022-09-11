@@ -10,6 +10,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ForgotPassword from "../ForgotPassword/ForgotPassword";
 import Profile from "../Profile/Profile";
 import UpdateProfile from "../UpdateProfile/UpdateProfile";
+import NewSet from "../NewSet/NewSet";
 
 function App() {
     return (
@@ -20,8 +21,11 @@ function App() {
                     <AuthProvider>
                         <Routes>
                             <Route path="/" element={<Dashboard />} />
+                            <Route path="/new-set" element={<NewSet />} />
                             <Route element={<PrivateRoute />}>
                                 <Route element={<Profile />} path="/profile" />
+                            </Route>
+                            <Route element={<PrivateRoute />}>
                                 <Route
                                     element={<UpdateProfile />}
                                     path="/update-profile"

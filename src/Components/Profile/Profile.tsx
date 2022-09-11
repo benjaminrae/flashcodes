@@ -1,10 +1,22 @@
 import "./Profile.css";
+import { useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import LogoutButton from "../LogoutButton/LogoutButton";
 import { json } from "stream/consumers";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
     const { currentUser } = useAuth();
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!currentUser) {
+            navigate("/");
+        }
+    }, [currentUser]);
+
+    if (!currentUser) {
+        return <></>;
+    }
     return (
         <div className="profile">
             <div className="profile__card">
