@@ -82,7 +82,7 @@ const Signup = () => {
                 />
                 <p>
                     Already have an account?{" "}
-                    <a href="" className="signup-form__login-link">
+                    <a href="/login" className="signup-form__login-link">
                         Log in here
                     </a>
                 </p>

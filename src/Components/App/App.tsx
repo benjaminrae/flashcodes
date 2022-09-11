@@ -1,16 +1,26 @@
+import "./App.css";
 import React from "react";
 import Signup from "../Signup/Signup";
 import Header from "../Header/Header";
 import Login from "../Login/Login";
-import "./App.css";
+import Dashboard from "../Dashboard/Dashboard";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "../../contexts/AuthContext";
 
 function App() {
     return (
         <div className="app">
             <Header />
             <div className="app__main-container">
-                {/* <Signup /> */}
-                <Login />
+                <Router>
+                    <AuthProvider>
+                        <Routes>
+                            <Route path="/" element={<Dashboard />} />
+                            <Route path="/signup" element={<Signup />} />
+                            <Route path="/login" element={<Login />} />
+                        </Routes>
+                    </AuthProvider>
+                </Router>
             </div>
         </div>
     );
