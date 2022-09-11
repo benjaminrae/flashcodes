@@ -1,15 +1,43 @@
 import "./Signup.css";
-import { useState } from "react";
+import React, { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Signup = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    // @ts-ignore
+    const { signup, currentUser } = useAuth();
+
+    const handleFormSubmit = async (event: React.SyntheticEvent) => {
+        console.log(event);
+        event.preventDefault();
+        if (password !== confirmPassword) {
+            return setError("Passwords do not match");
+        }
+        try {
+            setError("");
+            setLoading(true);
+            signup(email, password);
+        } catch {
+            setError("There was a problem signing up");
+        }
+        setLoading(false);
+    };
 
     return (
         <div className="signup">
-            <form className="signup__signup-form" action="submit">
+            <form className="signup__signup-form" onSubmit={handleFormSubmit}>
                 <h2 className="signup-form__title">Join Flashcode</h2>
+                {error && (
+                    <div className="signup-form__error-container">
+                        <p className="signup-form__error-message">{error}</p>
+                    </div>
+                )}
+                {currentUser && currentUser.email}
                 <div className="signup-form__group">
                     <label htmlFor="email">Email:</label>
                     <input
@@ -50,6 +78,7 @@ const Signup = () => {
                     className="signup-form__submit"
                     type="submit"
                     value="Signup"
+                    disabled={loading}
                 />
                 <p>
                     Already have an account?{" "}
