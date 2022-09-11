@@ -1,0 +1,15 @@
+.dashboard {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.dashboard__main-container {
+    flex-basis: 70%;
+    background-color: white;
+}
+
+.dashboard__secondary-container {
+    flex-basis: 30%;
+    background-color: var(--cultured);
+}

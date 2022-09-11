@@ -21,15 +21,19 @@ const Header = () => {
             <h1 className="header__title">Flashcode</h1>
             <nav className="header__nav">
                 <ul className="header__ul">
+                    <li>Search</li>
                     {loggedIn && (
                         <>
                             <li className="header__li">{currentUser.email}</li>
-                            <li
-                                onClick={() => {
-                                    logout();
-                                }}
-                            >
-                                Log Out
+                            <li>
+                                <button
+                                    className="header__button"
+                                    onClick={() => {
+                                        logout();
+                                    }}
+                                >
+                                    Log Out
+                                </button>
                             </li>
                         </>
                     )}
