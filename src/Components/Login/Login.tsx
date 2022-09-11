@@ -1,6 +1,7 @@
 import "./Login.css";
 import React, { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -8,8 +9,9 @@ const Login = () => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    // @ts-ignore
-    const { login, currentUser } = useAuth();
+    const { login } = useAuth();
+
+    const navigate = useNavigate();
 
     const handleFormSubmit = async (event: React.SyntheticEvent) => {
         console.log(event);
@@ -23,7 +25,8 @@ const Login = () => {
         try {
             setError("");
             setLoading(true);
-            login(email, password);
+            await login(email, password);
+            navigate("/");
         } catch {
             setError("There was a problem logging in");
         }
@@ -39,7 +42,6 @@ const Login = () => {
                         <p className="login-form__error-message">{error}</p>
                     </div>
                 )}
-                {currentUser && currentUser.email}
                 <div className="login-form__group">
                     <label htmlFor="email">Email:</label>
                     <input
@@ -73,9 +75,9 @@ const Login = () => {
                 />
                 <p>
                     Don't have an account?{" "}
-                    <a href="/signup" className="login-form__signup-link">
+                    <Link to="/signup" className="login-form__signup-link">
                         Sign up here
-                    </a>
+                    </Link>
                 </p>
             </form>
         </div>

@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    background-color: var(--manatee);
 }
 
 .header__title {
@@ -10,5 +11,4 @@
     font-family: "Source Code Pro", monospace;
     padding: 1rem;
     color: var(--space-cadet);
-    background-color: var(--manatee);
 }
