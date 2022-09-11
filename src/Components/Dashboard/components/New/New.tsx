@@ -2,6 +2,7 @@ import "./New.css";
 import { useState, useEffect } from "react";
 import { db } from "../../../../services/firebase/firebase";
 import { collection, DocumentData, getDocs } from "firebase/firestore";
+import Card from "../Card/Card";
 
 const New = () => {
     const [querySnapshot, setQuerySnapshot] = useState<DocumentData | null>();
@@ -40,14 +41,19 @@ const New = () => {
                 {setsData &&
                     setsData.map((set: any, index: number) => {
                         return (
-                            <div className="new__card" key={index}>
-                                <img
-                                    src={set.coverImage.url}
-                                    alt=""
-                                    className="card__cover-image"
-                                />
-                                <h3 className="card__title">{set.title}</h3>
-                            </div>
+                            <Card
+                                index={index}
+                                coverImageUrl={set.coverImage.url}
+                                title={set.title}
+                            />
+                            // <div className="new__card" key={index}>
+                            //     <img
+                            //         src={set.coverImage.url}
+                            //         alt=""
+                            //         className="card__cover-image"
+                            //     />
+                            //     <h3 className="card__title">{set.title}</h3>
+                            // </div>
                         );
                     })}
             </div>

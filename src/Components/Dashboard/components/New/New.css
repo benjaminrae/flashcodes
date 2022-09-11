@@ -14,14 +14,3 @@
     display: flex;
     flex-wrap: wrap;
 }
-
-.new__card {
-    height: 10rem;
-    width: 10rem;
-    border: 1px solid black;
-    border-radius: 1rem;
-}
-
-.card__cover-image {
-    height: 50%;
-}
