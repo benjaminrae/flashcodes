@@ -6,6 +6,7 @@ import Login from "../Login/Login";
 import Dashboard from "../Dashboard/Dashboard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "../../contexts/AuthContext";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 function App() {
     return (
@@ -15,7 +16,9 @@ function App() {
                 <Router>
                     <AuthProvider>
                         <Routes>
-                            <Route path="/" element={<Dashboard />} />
+                            <Route element={<PrivateRoute />}>
+                                <Route path="/" element={<Dashboard />} />
+                            </Route>
                             <Route path="/signup" element={<Signup />} />
                             <Route path="/login" element={<Login />} />
                         </Routes>

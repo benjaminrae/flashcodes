@@ -9,7 +9,7 @@ const Login = () => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const { login } = useAuth();
+    const { login, currentUser } = useAuth();
 
     const navigate = useNavigate();
 
@@ -26,8 +26,14 @@ const Login = () => {
             setError("");
             setLoading(true);
             await login(email, password);
+        } catch (error) {
+            setError("There was a problem logging in");
+        }
+        if (currentUser) {
+            console.log(currentUser);
             navigate("/");
-        } catch {
+        }
+        if (!currentUser) {
             setError("There was a problem logging in");
         }
         setLoading(false);
