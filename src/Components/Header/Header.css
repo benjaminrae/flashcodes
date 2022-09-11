@@ -1,0 +1,12 @@
+.header {
+    width: 100%;
+}
+
+.header__title {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    font-family: "Source Code Pro", monospace;
+    padding: 1rem;
+    color: var(--space-cadet);
+    background-color: var(--manatee);
+}
