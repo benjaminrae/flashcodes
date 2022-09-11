@@ -83,6 +83,12 @@ const Login = () => {
                     value="login"
                     disabled={loading}
                 />
+                <Link
+                    to="/forgot-password"
+                    className="login-form__forgot-password"
+                >
+                    Forgotten password?
+                </Link>
                 <p>
                     Don't have an account?{" "}
                     <Link to="/signup" className="login-form__signup-link">

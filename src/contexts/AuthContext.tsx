@@ -64,8 +64,11 @@ export const AuthProvider = ({ children }: Props) => {
             });
     };
     const logout = () => {
+        console.log("yess");
         return signOut(auth)
-            .then(() => {})
+            .then((response) => {
+                console.log("here");
+            })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;

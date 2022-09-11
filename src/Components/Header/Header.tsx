@@ -1,42 +1,51 @@
 import "./Header.css";
 import { useAuth } from "../../contexts/AuthContext";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../services/firebase/firebase";
+import { Link } from "react-router-dom";
+import LogoutButton from "../LogoutButton/LogoutButton";
 
 const Header = () => {
     const [loggedIn, setLoggedIn] = useState(false);
+    const [user, setUser] = useState<any>();
 
-    const { currentUser, logout } = useAuth();
-    console.log(currentUser);
+    const { logout } = useAuth();
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setLoggedIn(true);
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser(user);
+                setLoggedIn(true);
+            }
+            if (!user) {
+                setLoggedIn(false);
+            }
         });
-        return unsubscribe;
     }, []);
+
+    const handleLogoutClick = async (
+        event: React.MouseEvent<HTMLButtonElement>
+    ) => {
+        try {
+            await logout();
+            console.log("try");
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <header className="header">
             <h1 className="header__title">Flashcode</h1>
             <nav className="header__nav">
                 <ul className="header__ul">
-                    <li>Search</li>
+                    <li className="header__li">🔎</li>
                     {loggedIn && (
-                        <>
-                            <li className="header__li">{currentUser.email}</li>
-                            <li>
-                                <button
-                                    className="header__button"
-                                    onClick={() => {
-                                        logout();
-                                    }}
-                                >
-                                    Log Out
-                                </button>
-                            </li>
-                        </>
+                        <li>
+                            <a href="/profile">Profile</a>
+                        </li>
                     )}
+
                     {!loggedIn && (
                         <>
                             <li className="header__li">

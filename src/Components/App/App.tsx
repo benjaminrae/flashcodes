@@ -7,7 +7,8 @@ import Dashboard from "../Dashboard/Dashboard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "../../contexts/AuthContext";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-
+import ForgotPassword from "../ForgotPassword/ForgotPassword";
+import Profile from "../Profile/Profile";
 function App() {
     return (
         <div className="app">
@@ -21,6 +22,11 @@ function App() {
                             </Route>
                             <Route path="/signup" element={<Signup />} />
                             <Route path="/login" element={<Login />} />
+                            <Route
+                                element={<ForgotPassword />}
+                                path="/forgot-password"
+                            />
+                            <Route element={<Profile />} path="/profile" />
                         </Routes>
                     </AuthProvider>
                 </Router>
