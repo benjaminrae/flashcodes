@@ -9,6 +9,7 @@ const Signup = () => {
     return (
         <div className="signup">
             <form className="signup__signup-form" action="submit">
+                <h2 className="signup-form__title">Join Flashcode</h2>
                 <div className="signup-form__group">
                     <label htmlFor="email">Email:</label>
                     <input
@@ -45,7 +46,17 @@ const Signup = () => {
                         }}
                     ></input>
                 </div>
-                <input type="submit" value="Signup" />
+                <input
+                    className="signup-form__submit"
+                    type="submit"
+                    value="Signup"
+                />
+                <p>
+                    Already have an account?{" "}
+                    <a href="" className="signup-form__login-link">
+                        Log in here
+                    </a>
+                </p>
             </form>
         </div>
     );

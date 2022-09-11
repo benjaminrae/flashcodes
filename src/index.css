@@ -10,9 +10,5 @@
     --cultured: #edf2f4ff;
     --imperial-red: #ef233cff;
     --up-maroon: #800e13ff;
-}
-
-body {
-    height: 100vh;
-    width: 100vw;
+    font-family: "Source Code Pro", monospace;
 }
