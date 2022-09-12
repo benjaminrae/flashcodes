@@ -16,9 +16,9 @@ import Game from "../Game/Game";
 function App() {
     return (
         <div className="app">
-            <Header />
-            <div className="app__main-container">
-                <Router>
+            <Router>
+                <Header />
+                <div className="app__main-container">
                     <AuthProvider>
                         <Routes>
                             <Route path="/" element={<Dashboard />} />
@@ -42,8 +42,8 @@ function App() {
                             />
                         </Routes>
                     </AuthProvider>
-                </Router>
-            </div>
+                </div>
+            </Router>
         </div>
     );
 }

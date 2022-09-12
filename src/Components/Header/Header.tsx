@@ -53,14 +53,14 @@ const Header = () => {
                     {!loggedIn && (
                         <>
                             <li className="header__li">
-                                <a href="/login" className="header__link">
+                                <Link to="/login" className="header__link">
                                     Login
-                                </a>
+                                </Link>
                             </li>
                             <li className="header__li">
-                                <a href="/signup" className="header__link">
+                                <Link to="/signup" className="header__link">
                                     Sign up
-                                </a>
+                                </Link>
                             </li>
                         </>
                     )}
