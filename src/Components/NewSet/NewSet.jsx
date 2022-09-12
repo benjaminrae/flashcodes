@@ -4,7 +4,7 @@ import { useState } from "react";
 const NewSet = () => {
     return (
         <div class="new-set">
-            <h2 className="new-set__title">Create a new set of Flashcodes</h2>
+            <h2 className="new-set__title">Create a new set of s</h2>
             <form className="new-set__form">
                 <div className="form__group">
                     <label>Title</label>

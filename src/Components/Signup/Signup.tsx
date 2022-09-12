@@ -35,7 +35,7 @@ const Signup = () => {
     return (
         <div className="signup">
             <form className="signup__signup-form" onSubmit={handleFormSubmit}>
-                <h2 className="signup-form__title">Join Flashcode</h2>
+                <h2 className="signup-form__title">Join Flashcodes</h2>
                 {error && (
                     <div className="signup-form__error-container">
                         <p className="signup-form__error-message">{error}</p>
