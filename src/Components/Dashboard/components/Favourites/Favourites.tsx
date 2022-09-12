@@ -46,7 +46,13 @@ const Favourites = () => {
     return (
         <div className="favourites">
             <h2 className="favourites__title">Favourites:</h2>
-            <div className="favourites__cards-container">
+            <div
+                className={
+                    currentUser
+                        ? "favourites__cards-container"
+                        : "favourites__cards-container--empty"
+                }
+            >
                 {!currentUser && (
                     <Button
                         text={"Login to save favourites"}

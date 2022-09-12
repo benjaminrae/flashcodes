@@ -6,6 +6,7 @@
 }
 
 .dashboard__main-container {
+    width: 100%;
     padding: 1rem 2rem;
     gap: 2rem;
     display: flex;

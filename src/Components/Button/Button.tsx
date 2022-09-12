@@ -2,11 +2,12 @@ import "./Button.css";
 
 type ButtonProps = {
     text: string;
+    className?: string;
     onClick: () => void;
 };
-const Button = ({ text, onClick }: ButtonProps) => {
+const Button = ({ text, onClick, className }: ButtonProps) => {
     return (
-        <button className="button" onClick={onClick}>
+        <button className={`button ${className}`} onClick={onClick}>
             {text}
         </button>
     );
