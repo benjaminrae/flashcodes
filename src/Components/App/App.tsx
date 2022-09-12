@@ -11,6 +11,7 @@ import ForgotPassword from "../ForgotPassword/ForgotPassword";
 import Profile from "../Profile/Profile";
 import UpdateProfile from "../UpdateProfile/UpdateProfile";
 import NewSet from "../NewSet/NewSet";
+import Game from "../Game/Game";
 
 function App() {
     return (
@@ -22,6 +23,8 @@ function App() {
                         <Routes>
                             <Route path="/" element={<Dashboard />} />
                             <Route path="/new-set" element={<NewSet />} />
+                            <Route path="/game" element={<Game />} />
+
                             <Route element={<PrivateRoute />}>
                                 <Route element={<Profile />} path="/profile" />
                             </Route>
