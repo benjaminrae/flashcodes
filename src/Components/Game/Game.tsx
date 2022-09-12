@@ -5,24 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Button from "../Button/Button";
 import "./Game.css";
 import { db } from "../../services/firebase/firebase";
-
-type GameScoreBoardProps = {
-    teams: number;
-    teamScores: any;
-};
-const GameScoreBoard = ({ teams, teamScores }: GameScoreBoardProps) => {
-    return (
-        <div className="game-score-board">
-            {[...Array(teams)].map((team, index) => {
-                return (
-                    <div>
-                        Team {index + 1}: {teamScores[`team${index + 1}`]}
-                    </div>
-                );
-            })}
-        </div>
-    );
-};
+import GameScoreBoard from "./Components/GameScoreBoard/GameScoreBoard";
 
 const Game = () => {
     const [teams, setTeams] = useState(2);
