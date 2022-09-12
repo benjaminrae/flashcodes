@@ -6,6 +6,7 @@ import Button from "../Button/Button";
 import "./Game.css";
 import { db } from "../../services/firebase/firebase";
 import GameScoreBoard from "./Components/GameScoreBoard/GameScoreBoard";
+import Tile from "./Components/Tile/Tile";
 
 const Game = () => {
     const [teams, setTeams] = useState(2);
@@ -84,7 +85,13 @@ const Game = () => {
                     <GameScoreBoard teams={teams} teamScores={teamScores} />
                     <div className="tile__container">
                         {currentSet.cards.map((card: any, index: number) => {
-                            return <div key={index}>{index + 1}</div>;
+                            return (
+                                <Tile
+                                    key={index}
+                                    number={index + 1}
+                                    onClick={() => {}}
+                                />
+                            );
                         })}
                     </div>
                 </div>
