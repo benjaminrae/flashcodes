@@ -51,6 +51,7 @@ const Game = () => {
         <div className="game">
             {gameStage.isTeamSelect && (
                 <div className="game__team-select">
+                    {/* add game title and game cover image here} */}
                     <form className="team-select__form">
                         <label htmlFor="teams">How many teams are there?</label>
                         <select
@@ -81,7 +82,11 @@ const Game = () => {
             {gameStage.isTileSelect && (
                 <div className="game__tiles">
                     <GameScoreBoard teams={teams} teamScores={teamScores} />
-                    <div className="tile__container"></div>
+                    <div className="tile__container">
+                        {currentSet.cards.map((card: any, index: number) => {
+                            return <div key={index}>{index + 1}</div>;
+                        })}
+                    </div>
                 </div>
             )}
         </div>
