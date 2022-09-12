@@ -29,7 +29,7 @@ const Featured = () => {
         }
         const newSetData: any = [];
         querySnapshot.forEach((set: any) => {
-            newSetData.push(set.data());
+            newSetData.push({ id: set.id, data: set.data() });
         });
         setSetsData(newSetData);
     };
@@ -42,10 +42,11 @@ const Featured = () => {
                     setsData.map((set: any, index: number) => {
                         return (
                             <Card
-                                key={index}
-                                index={index}
-                                coverImageUrl={set.coverImage.url}
-                                title={set.title}
+                                key={set.id}
+                                index={set.data.index}
+                                coverImageUrl={set.data.coverImage.url}
+                                title={set.data.title}
+                                author={set.data.createdBy}
                             />
                         );
                     })}
