@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { db } from "../../../../services/firebase/firebase";
 import { collection, DocumentData, getDocs } from "firebase/firestore";
 import Card from "../Card/Card";
+import Button from "../../../Button/Button";
 
 const New = () => {
     const [querySnapshot, setQuerySnapshot] = useState<DocumentData | null>();
@@ -49,6 +50,11 @@ const New = () => {
                             />
                         );
                     })}
+                <Button
+                    className="cards-container__button"
+                    text=">"
+                    onClick={() => {}}
+                />
             </div>
         </div>
     );

@@ -20,3 +20,10 @@
     border: 1px solid black;
     filter: drop-shadow(0 2px 2px black);
 }
+
+/* .cards-container__button {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+} */

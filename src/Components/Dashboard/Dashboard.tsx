@@ -24,7 +24,7 @@ const Dashboard = () => {
     return (
         <div className="dashboard">
             <div className="dashboard__main-container">
-                {currentUser && <Favourites />}
+                <Favourites />
                 <Featured />
                 <New />
             </div>
