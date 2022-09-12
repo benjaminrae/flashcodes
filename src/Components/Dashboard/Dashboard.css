@@ -2,11 +2,10 @@
     height: 100%;
     width: 100%;
     display: flex;
+    background-color: var(--cultured);
 }
 
 .dashboard__main-container {
-    flex-basis: 70%;
-    background-color: white;
     padding: 1rem 2rem;
     gap: 2rem;
     display: flex;

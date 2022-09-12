@@ -7,18 +7,18 @@ import Favourites from "./components/Favourites/Favourites";
 import Featured from "./components/Featured/Featured";
 import LogoutButton from "../LogoutButton/LogoutButton";
 
-const DashboardFilter = () => {
-    return <div className="filter"></div>;
-};
+// const DashboardFilter = () => {
+//     return <div className="filter"></div>;
+// };
 
 const Dashboard = () => {
     const { currentUser, logout } = useAuth();
     const navigate = useNavigate();
-    useEffect(() => {
-        if (!currentUser) {
-            navigate("/login");
-        }
-    }, [currentUser]);
+    // useEffect(() => {
+    //     if (!currentUser) {
+    //         navigate("/login");
+    //     }
+    // }, [currentUser]);
 
     return (
         <div className="dashboard">
@@ -27,9 +27,9 @@ const Dashboard = () => {
                 {currentUser && <Favourites />}
                 <New />
             </div>
-            <div className="dashboard__secondary-container">
+            {/* <div className="dashboard__secondary-container">
                 <DashboardFilter />
-            </div>
+            </div> */}
         </div>
     );
 };
