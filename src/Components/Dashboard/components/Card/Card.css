@@ -7,8 +7,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 }
 
 .card__cover-image {
     height: 50%;
+}
+
+.card__title {
+    text-align: center;
+}
+
+.card__bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
 }

@@ -1,0 +1,16 @@
+.favourites {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.favourites__title {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.favourites__cards-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}

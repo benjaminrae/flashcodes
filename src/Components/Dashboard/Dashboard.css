@@ -7,6 +7,11 @@
 .dashboard__main-container {
     flex-basis: 70%;
     background-color: white;
+    padding: 1rem 2rem;
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    /* flex-direction: column; */
 }
 
 .dashboard__secondary-container {
