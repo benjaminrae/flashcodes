@@ -1,4 +1,9 @@
+[![wakatime](https://wakatime.com/badge/user/6890f6ce-e891-46bb-b605-5fc5dcd096d6/project/f9d1911e-9889-4f8c-aad6-a852433ca1a9.svg)]
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f5ff11a0-4b98-46f4-a7aa-e0b5ba59e53d/deploy-status)](https://app.netlify.com/sites/flashcodes-autumn-hacks/deploys)(https://wakatime.com/badge/user/6890f6ce-e891-46bb-b605-5fc5dcd096d6/project/f9d1911e-9889-4f8c-aad6-a852433ca1a9)
+
 # Flashcodes
+
+### Flashcodes === Flashcards
 
 [Live Site - Demo can be played in Javascript Quirks](https://flashcodes-autumn-hacks.netlify.app/login)
 
@@ -45,6 +50,18 @@ The code snippets I generated for the demo come from [Ray.so](https://ray.so/). 
 This game would be run on an overhead projector by a teacher in a classroom with students, or screen sharing in an online class.
 
 Students are split into teams, and each team takes it in turn to answer a question. If the team gets it correct then they are awarded points. Of course, the team with the highest points wins.
+
+### Game tiles the teacher would project
+
+![Game Tiles](src/resources/screenshots/in-game-screenshot.png)
+
+### Front of the Flashcodes
+
+![Flashcode Front](src/resources/screenshots/in-game-flashcard-front.png)
+
+### Back of the Flashcodes
+
+![Flashcode Back](src/resources/screenshots/in-game-flashcard-back.png)
 
 ### Built with ⚒️
 
