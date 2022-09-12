@@ -44,6 +44,7 @@ const New = () => {
                         return (
                             <Card
                                 key={set.id}
+                                id={set.id}
                                 index={set.data.index}
                                 coverImageUrl={set.data.coverImage.url}
                                 title={set.data.title}

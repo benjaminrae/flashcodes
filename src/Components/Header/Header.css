@@ -26,3 +26,8 @@
     align-items: center;
     gap: 1rem;
 }
+
+.header__link {
+    color: black;
+    font-size: larger;
+}
