@@ -7,7 +7,7 @@ import "./Game.css";
 import { db } from "../../services/firebase/firebase";
 import GameScoreBoard from "./Components/GameScoreBoard/GameScoreBoard";
 import Tile from "./Components/Tile/Tile";
-
+import Buttons from "../Button/Button";
 const Game = () => {
     const [teams, setTeams] = useState(2);
     const [gameStage, setGameStage] = useState({
@@ -26,6 +26,7 @@ const Game = () => {
     });
     const [currentSet, setCurrentSet] = useState<any>();
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>();
+    const [currentTeam, setCurrentTeam] = useState("team1");
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -53,6 +54,43 @@ const Game = () => {
         const { target } = event;
         console.log(target.id);
         setCurrentQuestionIndex(target.id);
+        setGameStage((prev) => ({
+            ...prev,
+            isTileSelect: false,
+            isCardFront: true,
+        }));
+    };
+
+    const onCheckClick = () => {
+        setGameStage((prev) => ({
+            ...prev,
+            isCardFront: false,
+            isCardBack: true,
+        }));
+    };
+
+    const onCorrectClick = () => {
+        setGameStage((prev) => ({
+            ...prev,
+            isCardBack: false,
+            isTileSelect: true,
+        }));
+    };
+
+    const onIncorrectClick = () => {
+        setGameStage((prev) => ({
+            ...prev,
+            isCardBack: false,
+            isTileSelect: true,
+        }));
+    };
+
+    const onSeeQuestionClick = () => {
+        setGameStage((prev) => ({
+            ...prev,
+            isCardBack: false,
+            isCardFront: true,
+        }));
     };
 
     return (
@@ -102,6 +140,53 @@ const Game = () => {
                             );
                         })}
                     </div>
+                </div>
+            )}
+            {gameStage.isCardFront && (
+                <div className="game__card-front">
+                    <GameScoreBoard teams={teams} teamScores={teamScores} />
+                    {currentQuestionIndex && (
+                        <div className="card-front__container">
+                            <div className="card-front__question">
+                                {currentSet.cards[currentQuestionIndex].title}
+                            </div>
+                            <img
+                                className="card-front__image"
+                                src={require(`../../resources/images/${currentQuestionIndex}.png`)}
+                                alt=""
+                            />
+                            <Button text="Check" onClick={onCheckClick} />
+                        </div>
+                    )}
+                </div>
+            )}
+            {gameStage.isCardBack && (
+                <div className="game__card-back">
+                    <GameScoreBoard teams={teams} teamScores={teamScores} />
+                    {currentQuestionIndex && (
+                        <div className="card-back__container">
+                            <div className="card-back__question">
+                                {currentSet.cards[currentQuestionIndex].title}
+                            </div>
+                            <div className="card-back__answer">
+                                {currentSet.cards[currentQuestionIndex].answer}
+                            </div>
+                            <div className="card-back__buttons">
+                                <Button
+                                    text="Correct"
+                                    onClick={onCorrectClick}
+                                />
+                                <Button
+                                    text="Incorrect"
+                                    onClick={onIncorrectClick}
+                                />
+                                <Button
+                                    text="See Question"
+                                    onClick={onSeeQuestionClick}
+                                />
+                            </div>
+                        </div>
+                    )}
                 </div>
             )}
         </div>
