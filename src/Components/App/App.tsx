@@ -23,7 +23,7 @@ function App() {
                         <Routes>
                             <Route path="/" element={<Dashboard />} />
                             <Route path="/new-set" element={<NewSet />} />
-                            <Route path="/game" element={<Game />} />
+                            <Route path="/game:id" element={<Game />} />
 
                             <Route element={<PrivateRoute />}>
                                 <Route element={<Profile />} path="/profile" />

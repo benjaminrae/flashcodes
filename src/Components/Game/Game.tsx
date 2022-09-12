@@ -1,6 +1,28 @@
-import React, { useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import React, { useState, useEffect } from "react";
+
+import { useNavigate, useParams } from "react-router-dom";
 import Button from "../Button/Button";
 import "./Game.css";
+import { db } from "../../services/firebase/firebase";
+
+type GameScoreBoardProps = {
+    teams: number;
+    teamScores: any;
+};
+const GameScoreBoard = ({ teams, teamScores }: GameScoreBoardProps) => {
+    return (
+        <div className="game-score-board">
+            {[...Array(teams)].map((team, index) => {
+                return (
+                    <div>
+                        Team {index + 1}: {teamScores[`team${index + 1}`]}
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
 
 const Game = () => {
     const [teams, setTeams] = useState(2);
@@ -12,7 +34,36 @@ const Game = () => {
         isWrapUp: false,
         isGameOver: false,
     });
-    const [teamScores, setTeamScores] = useState({});
+    const [teamScores, setTeamScores] = useState({
+        team1: 0,
+        team2: 0,
+        team3: 0,
+        team4: 0,
+    });
+    const [currentSet, setCurrentSet] = useState<any>();
+
+    const { id } = useParams();
+    const navigate = useNavigate();
+    if (!id) {
+        //should navigate to a 404 or an error
+        navigate("/");
+    }
+
+    useEffect(() => {
+        getAndSetGameData();
+    }, []);
+
+    const getAndSetGameData = async () => {
+        const docRef = doc(db, "sets", `${id}`);
+        try {
+            const docSnap = await getDoc(docRef);
+            setCurrentSet(docSnap.data());
+        } catch (error) {
+            // should show some error/error page
+            navigate("/");
+        }
+    };
+
     return (
         <div className="game">
             {gameStage.isTeamSelect && (
@@ -45,9 +96,10 @@ const Game = () => {
                 </div>
             )}
             {gameStage.isTileSelect && (
-                <>
-                    <></>
-                </>
+                <div className="game__tiles">
+                    <GameScoreBoard teams={teams} teamScores={teamScores} />
+                    <div className="tile__container"></div>
+                </div>
             )}
         </div>
     );
