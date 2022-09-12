@@ -5,10 +5,15 @@ type TileProps = {
     number: number;
     id: number;
     onClick: any;
+    className: string;
 };
-const Tile = ({ number, onClick, id }: TileProps) => {
+const Tile = ({ number, onClick, id, className }: TileProps) => {
     return (
-        <div className="tile" onClick={onClick} id={id.toString()}>
+        <div
+            className={`tile ${className}`}
+            onClick={onClick}
+            id={id.toString()}
+        >
             {number}
         </div>
     );

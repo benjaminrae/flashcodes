@@ -14,3 +14,7 @@
     font-weight: bolder;
     padding: 2rem;
 }
+
+.tile--answered {
+    background-color: var(--space-cadet);
+}

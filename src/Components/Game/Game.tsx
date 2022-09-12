@@ -43,6 +43,21 @@ const Game = () => {
         getAndSetGameData();
     }, []);
 
+    const checkGameOver = () => {
+        if (currentSet.cards.every((card: any) => card.isAnswered)) {
+            console.log("gameover");
+            const gameOver = {
+                isTeamSelect: false,
+                isTileSelect: false,
+                isCardFront: false,
+                isCardBack: false,
+                isWrapUp: false,
+                isGameOver: true,
+            };
+            setGameStage(gameOver);
+        }
+    };
+
     const getAndSetGameData = async () => {
         const docRef = doc(db, "sets", `${id}`);
         try {
@@ -86,6 +101,7 @@ const Game = () => {
             isTileSelect: true,
         }));
         changeTeams();
+        checkGameOver();
     };
 
     const onIncorrectClick = () => {
@@ -96,6 +112,7 @@ const Game = () => {
             isTileSelect: true,
         }));
         changeTeams();
+        checkGameOver();
     };
 
     const onSeeQuestionClick = () => {
@@ -135,7 +152,7 @@ const Game = () => {
         if (!currentQuestionIndex) {
             return;
         }
-        currentSet.cards[currentQuestionIndex].answered = true;
+        currentSet.cards[currentQuestionIndex].isAnswered = true;
     };
     return (
         <div className="game">
@@ -178,7 +195,16 @@ const Game = () => {
                                     key={index}
                                     id={index}
                                     number={index + 1}
-                                    onClick={onTileClick}
+                                    onClick={
+                                        currentSet.cards[index].isAnswered
+                                            ? () => {}
+                                            : onTileClick
+                                    }
+                                    className={
+                                        currentSet.cards[index].isAnswered
+                                            ? "tile--answered"
+                                            : ""
+                                    }
                                 />
                             );
                         })}
@@ -230,6 +256,21 @@ const Game = () => {
                             </div>
                         </div>
                     )}
+                </div>
+            )}
+            {gameStage.isGameOver && (
+                <div className="game__game-over">
+                    <GameScoreBoard teams={teams} teamScores={teamScores} />
+
+                    <div className="game-over__container">
+                        <div className="game-over__title">Game Over!</div>
+                        <Button
+                            text="Find another game"
+                            onClick={() => {
+                                navigate("/");
+                            }}
+                        />
+                    </div>
                 </div>
             )}
         </div>
