@@ -108,3 +108,8 @@
 .card-back__question {
     font-weight: bolder;
 }
+
+.card-back__buttons {
+    display: flex;
+    gap: 1rem;
+}

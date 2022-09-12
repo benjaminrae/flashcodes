@@ -8,6 +8,7 @@ import { db } from "../../services/firebase/firebase";
 import GameScoreBoard from "./Components/GameScoreBoard/GameScoreBoard";
 import Tile from "./Components/Tile/Tile";
 import Buttons from "../Button/Button";
+
 const Game = () => {
     const [teams, setTeams] = useState(2);
     const [gameStage, setGameStage] = useState({
@@ -30,6 +31,9 @@ const Game = () => {
 
     const { id } = useParams();
     const navigate = useNavigate();
+
+    type ObjectKey = keyof typeof teamScores;
+
     if (!id) {
         //should navigate to a 404 or an error
         navigate("/");
@@ -70,19 +74,28 @@ const Game = () => {
     };
 
     const onCorrectClick = () => {
+        markQuestionAnswered();
+        const currentTeamKey = currentTeam as ObjectKey;
+        setTeamScores((prev) => ({
+            ...prev,
+            [currentTeamKey]: prev[currentTeamKey] + 10,
+        }));
         setGameStage((prev) => ({
             ...prev,
             isCardBack: false,
             isTileSelect: true,
         }));
+        changeTeams();
     };
 
     const onIncorrectClick = () => {
+        markQuestionAnswered();
         setGameStage((prev) => ({
             ...prev,
             isCardBack: false,
             isTileSelect: true,
         }));
+        changeTeams();
     };
 
     const onSeeQuestionClick = () => {
@@ -93,6 +106,37 @@ const Game = () => {
         }));
     };
 
+    const changeTeams = () => {
+        switch (currentTeam) {
+            case "team1":
+                setCurrentTeam("team2");
+                break;
+            case "team2":
+                if (teams > 2) {
+                    setCurrentTeam("team3");
+                } else {
+                    setCurrentTeam("team1");
+                }
+                break;
+            case "team3":
+                if (teams > 3) {
+                    setCurrentTeam("team4");
+                } else {
+                    setCurrentTeam("team1");
+                }
+                break;
+            default:
+                setCurrentTeam("team1");
+                break;
+        }
+    };
+
+    const markQuestionAnswered = () => {
+        if (!currentQuestionIndex) {
+            return;
+        }
+        currentSet.cards[currentQuestionIndex].answered = true;
+    };
     return (
         <div className="game">
             {gameStage.isTeamSelect && (
@@ -107,7 +151,6 @@ const Game = () => {
                                 setTeams(+event.target.value);
                             }}
                         >
-                            <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
