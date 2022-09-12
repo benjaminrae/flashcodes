@@ -42,6 +42,7 @@ const Featured = () => {
                     setsData.map((set: any, index: number) => {
                         return (
                             <Card
+                                key={index}
                                 index={index}
                                 coverImageUrl={set.coverImage.url}
                                 title={set.title}
