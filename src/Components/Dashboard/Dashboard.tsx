@@ -6,6 +6,7 @@ import New from "./components/New/New";
 import Favourites from "./components/Favourites/Favourites";
 import Featured from "./components/Featured/Featured";
 import LogoutButton from "../LogoutButton/LogoutButton";
+import Button from "../Button/Button";
 
 // const DashboardFilter = () => {
 //     return <div className="filter"></div>;
