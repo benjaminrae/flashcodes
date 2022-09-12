@@ -13,7 +13,12 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    position: relative;
+    gap: 1rem;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid black;
+    filter: drop-shadow(0 2px 2px black);
 }
 
 .cards-container__button {

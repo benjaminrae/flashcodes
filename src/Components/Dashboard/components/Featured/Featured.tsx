@@ -37,7 +37,7 @@ const Featured = () => {
     return (
         <div className="featured">
             <h2 className="featured__title">Featured:</h2>
-            <div className="new__cards-container">
+            <div className="featured__cards-container">
                 {setsData &&
                     setsData.map((set: any, index: number) => {
                         return (
