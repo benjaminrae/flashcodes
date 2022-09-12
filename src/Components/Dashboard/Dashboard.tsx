@@ -23,8 +23,8 @@ const Dashboard = () => {
     return (
         <div className="dashboard">
             <div className="dashboard__main-container">
-                <Featured />
                 {currentUser && <Favourites />}
+                <Featured />
                 <New />
             </div>
             {/* <div className="dashboard__secondary-container">
