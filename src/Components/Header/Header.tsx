@@ -40,6 +40,10 @@ const Header = () => {
             <nav className="header__nav">
                 <ul className="header__ul">
                     <li className="header__li">🔎</li>
+                    <li className="header__li">
+                        <a href="/">🏠</a>
+                    </li>
+
                     {loggedIn && (
                         <li>
                             <a href="/profile">Profile</a>
