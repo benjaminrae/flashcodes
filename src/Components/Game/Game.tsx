@@ -25,6 +25,7 @@ const Game = () => {
         team4: 0,
     });
     const [currentSet, setCurrentSet] = useState<any>();
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>();
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -46,6 +47,12 @@ const Game = () => {
             // should show some error/error page
             navigate("/");
         }
+    };
+
+    const onTileClick = (event: any) => {
+        const { target } = event;
+        console.log(target.id);
+        setCurrentQuestionIndex(target.id);
     };
 
     return (
@@ -88,8 +95,9 @@ const Game = () => {
                             return (
                                 <Tile
                                     key={index}
+                                    id={index}
                                     number={index + 1}
-                                    onClick={() => {}}
+                                    onClick={onTileClick}
                                 />
                             );
                         })}

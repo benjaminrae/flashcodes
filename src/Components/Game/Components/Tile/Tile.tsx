@@ -3,10 +3,15 @@ import "./Tile.css";
 
 type TileProps = {
     number: number;
-    onClick: () => void;
+    id: number;
+    onClick: any;
 };
-const Tile = ({ number, onClick }: TileProps) => {
-    return <div className="tile">{number}</div>;
+const Tile = ({ number, onClick, id }: TileProps) => {
+    return (
+        <div className="tile" onClick={onClick} id={id.toString()}>
+            {number}
+        </div>
+    );
 };
 
 export default Tile;
