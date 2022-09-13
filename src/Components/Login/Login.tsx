@@ -46,7 +46,7 @@ const Login = () => {
     return (
         <div className="login">
             <form className="login__login-form" onSubmit={handleFormSubmit}>
-                <h2 className="login-form__title">Log in to Flashcode</h2>
+                <h2 className="login-form__title">Log in to Flashcodes</h2>
                 {error && (
                     <div className="login-form__error-container">
                         <p className="login-form__error-message">{error}</p>

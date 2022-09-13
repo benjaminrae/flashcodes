@@ -1,0 +1,16 @@
+.button {
+    background-color: var(--imperial-red);
+    font-size: larger;
+    font-weight: bolder;
+    cursor: pointer;
+    border: 3px solid var(--imperial-red);
+    color: var(--cultured);
+    border-radius: 0.5rem;
+    padding: 0.5rem 2rem;
+}
+
+.button:hover,
+.button:focus {
+    background-color: var(--cultured);
+    color: black;
+}

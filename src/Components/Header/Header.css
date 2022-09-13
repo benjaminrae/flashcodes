@@ -6,7 +6,7 @@
     justify-content: space-between;
     /* justify-content: space-evenly; */
     align-items: center;
-    padding: 1rem;
+    padding: 1rem 2rem;
 }
 
 .header__title {
@@ -25,4 +25,9 @@
     display: inline-flex;
     align-items: center;
     gap: 1rem;
+}
+
+.header__link {
+    color: black;
+    font-size: larger;
 }

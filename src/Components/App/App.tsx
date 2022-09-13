@@ -11,17 +11,22 @@ import ForgotPassword from "../ForgotPassword/ForgotPassword";
 import Profile from "../Profile/Profile";
 import UpdateProfile from "../UpdateProfile/UpdateProfile";
 import NewSet from "../NewSet/NewSet";
+import Game from "../Game/Game";
+import PrismTest from "../PrismTest/PrismTest";
 
 function App() {
     return (
         <div className="app">
-            <Header />
-            <div className="app__main-container">
-                <Router>
+            <Router>
+                <Header />
+                <div className="app__main-container">
                     <AuthProvider>
                         <Routes>
+                            <Route path="/test" element={<PrismTest />} />
                             <Route path="/" element={<Dashboard />} />
                             <Route path="/new-set" element={<NewSet />} />
+                            <Route path="/game:id" element={<Game />} />
+
                             <Route element={<PrivateRoute />}>
                                 <Route element={<Profile />} path="/profile" />
                             </Route>
@@ -39,8 +44,8 @@ function App() {
                             />
                         </Routes>
                     </AuthProvider>
-                </Router>
-            </div>
+                </div>
+            </Router>
         </div>
     );
 }

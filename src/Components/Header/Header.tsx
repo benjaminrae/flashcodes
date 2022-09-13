@@ -36,10 +36,14 @@ const Header = () => {
 
     return (
         <header className="header">
-            <h1 className="header__title">Flashcode</h1>
+            <h1 className="header__title">Flashcodes</h1>
             <nav className="header__nav">
                 <ul className="header__ul">
                     <li className="header__li">🔎</li>
+                    <li className="header__li">
+                        <a href="/">🏠</a>
+                    </li>
+
                     {loggedIn && (
                         <li>
                             <a href="/profile">Profile</a>
@@ -49,10 +53,14 @@ const Header = () => {
                     {!loggedIn && (
                         <>
                             <li className="header__li">
-                                <a href="/login">Login</a>
+                                <Link to="/login" className="header__link">
+                                    Login
+                                </Link>
                             </li>
                             <li className="header__li">
-                                <a href="/signup">Sign up</a>
+                                <Link to="/signup" className="header__link">
+                                    Sign up
+                                </Link>
                             </li>
                         </>
                     )}

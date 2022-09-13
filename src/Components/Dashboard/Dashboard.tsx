@@ -6,30 +6,31 @@ import New from "./components/New/New";
 import Favourites from "./components/Favourites/Favourites";
 import Featured from "./components/Featured/Featured";
 import LogoutButton from "../LogoutButton/LogoutButton";
+import Button from "../Button/Button";
 
-const DashboardFilter = () => {
-    return <div className="filter"></div>;
-};
+// const DashboardFilter = () => {
+//     return <div className="filter"></div>;
+// };
 
 const Dashboard = () => {
     const { currentUser, logout } = useAuth();
     const navigate = useNavigate();
-    useEffect(() => {
-        if (!currentUser) {
-            navigate("/login");
-        }
-    }, [currentUser]);
+    // useEffect(() => {
+    //     if (!currentUser) {
+    //         navigate("/login");
+    //     }
+    // }, [currentUser]);
 
     return (
         <div className="dashboard">
             <div className="dashboard__main-container">
+                <Favourites />
                 <Featured />
-                {currentUser && <Favourites />}
                 <New />
             </div>
-            <div className="dashboard__secondary-container">
+            {/* <div className="dashboard__secondary-container">
                 <DashboardFilter />
-            </div>
+            </div> */}
         </div>
     );
 };
