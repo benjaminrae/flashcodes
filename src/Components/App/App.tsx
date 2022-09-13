@@ -12,7 +12,7 @@ import Profile from "../Profile/Profile";
 import UpdateProfile from "../UpdateProfile/UpdateProfile";
 import NewSet from "../NewSet/NewSet";
 import Game from "../Game/Game";
-import PrismTest from "../CodeSnippet/PrismTest";
+import CodeSnippet from "../CodeSnippet/CodeSnippet";
 
 function App() {
     return (
@@ -22,7 +22,7 @@ function App() {
                 <div className="app__main-container">
                     <AuthProvider>
                         <Routes>
-                            <Route path="/test" element={<PrismTest />} />
+                            <Route path="/test" element={<CodeSnippet />} />
                             <Route path="/" element={<Dashboard />} />
                             <Route path="/new-set" element={<NewSet />} />
                             <Route path="/game:id" element={<Game />} />

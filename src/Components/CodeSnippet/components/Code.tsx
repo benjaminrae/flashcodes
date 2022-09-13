@@ -1,11 +1,6 @@
 import React from "react";
 import { useEffect, useRef } from "react";
-
-type CodeProps = {
-    code: string;
-    language: string;
-    className: string;
-};
+import { CodeProps } from "../CodeSnippet";
 
 const Code = ({ code, language, className }: CodeProps) => {
     const codeRef = useRef(null);
