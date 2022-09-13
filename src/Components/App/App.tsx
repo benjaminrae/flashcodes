@@ -12,7 +12,7 @@ import Profile from "../Profile/Profile";
 import UpdateProfile from "../UpdateProfile/UpdateProfile";
 import NewSet from "../NewSet/NewSet";
 import Game from "../Game/Game";
-import PrismTest from "../PrismTest/PrismTest";
+import PrismTest from "../CodeSnippet/PrismTest";
 
 function App() {
     return (
