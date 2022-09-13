@@ -1,4 +1,4 @@
-import "./App.css";
+// import "./App.css";
 import React from "react";
 import Signup from "../Signup/Signup";
 import Header from "../Header/Header";
@@ -12,6 +12,7 @@ import Profile from "../Profile/Profile";
 import UpdateProfile from "../UpdateProfile/UpdateProfile";
 import NewSet from "../NewSet/NewSet";
 import Game from "../Game/Game";
+import PrismTest from "../PrismTest/PrismTest";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                 <div className="app__main-container">
                     <AuthProvider>
                         <Routes>
+                            <Route path="/test" element={<PrismTest />} />
                             <Route path="/" element={<Dashboard />} />
                             <Route path="/new-set" element={<NewSet />} />
                             <Route path="/game:id" element={<Game />} />
