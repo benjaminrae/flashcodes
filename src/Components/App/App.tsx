@@ -1,4 +1,4 @@
-// import "./App.css";
+import "./App.css";
 import React from "react";
 import Signup from "../Signup/Signup";
 import Header from "../Header/Header";

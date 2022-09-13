@@ -1,2 +1,38 @@
 .prism-test {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--cultured);
+}
+
+.prism-test__container {
+    background-color: white;
+    height: 70%;
+    width: 70%;
+    padding: 2rem;
+    border: 1px solid black;
+    border-radius: 1rem;
+    filter: drop-shadow(0 2px 2px black);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.prism-test__question {
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.prism-test__snippet {
+    background: linear-gradient(45deg, var(--up-maroon), var(--manatee));
+    padding: 5vmin;
+    border-radius: 1rem;
+}
+
+.snippet-text {
+    font-size: 1.5rem !important;
 }

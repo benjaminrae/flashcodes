@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from "react";
-// import "./PrismTest.css";
+import Button from "../Button/Button";
+import "./PrismTest.css";
 
 const PrismTest = () => {
-    const code = "const variable = 'variable'";
+    const code = 'console.log("5" + 1)';
 
     const codeRef = useRef(null);
 
@@ -17,28 +18,22 @@ const PrismTest = () => {
 
     return (
         <div className="prism-test">
-            <div className="prism-tests__container">
-                <div className="prism-tests__question"></div>
-                <div className="prism-tests__answer"></div>
-                <div className="prism-tests__buttons">
+            <div className="prism-test__container">
+                <div className="prism-test__question">
+                    What's the output of this code?
+                </div>
+                <div className="prism-test__answer"></div>
+                <div className="prism-test__snippet">
                     <pre>
-                        <code ref={codeRef} className="language-javascript">
+                        <code
+                            ref={codeRef}
+                            className="language-javascript snippet-text"
+                        >
                             {code}
                         </code>
                     </pre>
-                    {/* <Button
-                    text="Correct"
-                    onClick={onCorrectClick}
-                />
-                <Button
-                    text="Incorrect"
-                    onClick={onIncorrectClick}
-                />
-                <Button
-                    text="See Question"
-                    onClick={onSeeQuestionClick}
-                /> */}
                 </div>
+                <Button text="Check" onClick={() => {}} />
             </div>
         </div>
     );
